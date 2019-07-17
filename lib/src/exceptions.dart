@@ -27,5 +27,7 @@ void main(){
     print("Exception=>"+e.toString()+" s:"+s.toString());
   }catch(e,s){
     print("e:"+e.toString()+" s:"+s.toString());
+  }finally{
+    print("finally");
   }
 }

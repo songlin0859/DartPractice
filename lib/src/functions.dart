@@ -1,6 +1,6 @@
 //胖箭头 【只有一个语句的方法可以使用缩写】
 //void main()=>print("=> func");
-
+//所有的函数都返回一个值。如果没有指定返回值，则 默认把语句 return null; 作为函数的最后一个语句执行。
 void main(){
   helloDart();
   sayHi("SL");
