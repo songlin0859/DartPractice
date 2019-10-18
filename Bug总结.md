@@ -1,6 +1,6 @@
 # Bug总结
-## 1、空指针(NullPointerException)除了直接使用导致空指针异常，一些操作可能会隐含空指针
-### 1.1、比如使用android.widget.ArrayAdapter<T>,当传入的 **objects** 中某一项为空时 且 object 不是CharSequence或其子类，会导致空指针
+## 1、空指针(NullPointerException)
+### 1.1、隐含数据导致空指针，比如使用android.widget.ArrayAdapter<T>,当传入的 objects 中某一项为空时 且 object 不是CharSequence或其子类，会导致空指针
 ```
 
 	public @NonNull View getView(int position, @Nullable View convertView,
@@ -49,14 +49,14 @@
         return view;
     }
 ```
-### 1.2、隐含操作导致空指针 比如int float 的包装类型拆箱 Switch中传入的String内容等
+### 1.2、隐含操作导致空指针 比如Integer Float 和int flaot类型比较大小时的拆箱 Switch中传入的String内容等
 ```
 
 	public class JavaDemo {
 	    public static void main(String[] args){
 	        Integer aInt=null;
 	        //System.out.println(aInt==3);
-	//Exception in thread "main" java.lang.NullPointerException at main.java.JavaDemo.main(JavaDemo.java:7)
+			//Exception in thread "main" java.lang.NullPointerException at main.java.JavaDemo.main(JavaDemo.java:7)
 	        System.out.println(3==aInt);//这两行都会导致空指针 
 	    }
 	}
@@ -74,7 +74,7 @@
 	}
 ```
 
-### 1.3、比较字符串或者类相等时，确保调用equals方法的对象不为null 和常量比较时使用常量的equals方法(之前空闲货位没有库存后台返回null 导致有问题)；
+### 1.3、比较字符串或者类相等时，确保调用equals方法的对象不为null 和常量比较时使用常量的equals方法；
 ```
 
 	private static final String IS_TRUE = "1";
