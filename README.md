@@ -126,6 +126,89 @@ void main(){
 > 在 Dart 中，runes 代表字符串的 UTF-32 code points。 ==不懂
 ---
 ### [Functions（方法）](http://dart.goodev.org/guides/language/language-tour#functions%E6%96%B9%E6%B3%95)
+> Dart 是一个真正的面向对象语言，方法也是对象并且具有一种 类型， Function。 这意味着，方法可以赋值给变量，也可以当做其他方法的参数。 也可以把 Dart 类的实例当做方法来调用。
+方法格式 *返回值 方法名（【参数列表】）{方法体}*
+```
+String desc(String name){
+  return "desc>name:$name";
+}
+
+```
+
+对于只有一个表达式的方法，你可以选择 使用缩写语法来定义
+```
+String desc(String name)=>"desc>name:$name";
+```
+### 可选参数
+> 可选参数可以是命名参数或者基于位置的参数，但是这两种参数不能同时当做可选参数。
+### 可选命名参数
+```
+void main(){
+  //调用方法的时候，你可以使用这种形式 paramName: value 来指定命名参数
+  desc(name: "Lin");
+  desc(name: "Lin",age: 23);
+  desc(age: 23);
+}
+//在定义方法的时候，使用 {param1, param2, …} 的形式来指定命名参数
+void desc({String name,int age}){
+  print('name:$name age:$age');
+}
+-----------------
+name:Lin age:null
+name:Lin age:23
+name:null age:23
+```
+### 可选位置参数
+> 把一些方法的参数放到 [] 中就变成可选 位置参数了
+```
+void main(){
+  desc( "Lin");
+  desc( "Lin", 23);
+  //这样不行！！！！
+  desc(23);
+}
+
+void desc([String name,int age]){
+  print('name:$name age:$age');
+}
+```
+### 默认参数值
+> 在定义方法的时候，可以使用 = 来定义可选参数的默认值。 默认值只能是编译时常量。 如果没有提供默认值，则默认值为 null。
+```
+void desc({String name="n",int age=1}){
+  print('name:$name age:$age'); 
+}
+```
+### main() function（入口函数）
+> 每个应用都需要有个顶级的 main() 入口方法才能执行。 main() 方法的返回值为 void 并且有个可选的 List<String> 参数。
+### 一等方法对象
+> 可以把方法当做参数调用另外一个方法。方法也可以赋值给一个变量;
+### 匿名方法 * lambda 或者 closure 闭包*
+### 返回值
+> 所有的函数都返回一个值。如果没有指定返回值，则 默认把语句 return null; 作为函数的最后一个语句执行。
+```
+void main(){
+  var f=desc(name: "Lin");
+  print(f);
+}
+String desc({String name="n",int age=1}){
+  print('name:$name age:$age');
+}
+-----------
+name:Lin age:1
+null
+```
+
+
+
+
+
+
+
+
+
+
+
 
 
 
