@@ -198,6 +198,41 @@ String desc({String name="n",int age=1}){
 name:Lin age:1
 null
 ```
+---
+### 操作符 +_*/ ...
+### 流程控制语句
+1. if and else
+2. for loops
+3. while and do-while loops
+4. break and continue
+5. switch and case
+6. assert
+### If and else
+```
+  void main(){
+  descGrade(95);
+  descGrade(85);
+  descGrade(75);
+  descGrade(55);
+}
+
+void descGrade(int grade){
+  if(grade>90){
+    print("优秀");
+  }else if(grade>80){
+    print("良好");
+  }else if(grade>60){
+    print("一般");
+  }else{
+    print("不及格");
+  }
+}
+------------
+优秀
+良好
+一般
+不及格
+```
 
 
 
