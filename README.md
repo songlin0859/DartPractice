@@ -233,7 +233,128 @@ void descGrade(int grade){
 一般
 不及格
 ```
+### for
+```
+void main(){
+  for(var i=0;i<10;i++){
+    print("i=$i");
+  }
+}
+```
+### While and do-while
+```
+void main(){
+  int i =10;
+  while(i>0){
+    print("i : $i");
+    i--;
+  }
 
+  do{
+    i++;
+    print("di : $i");
+  }while(i<10);
+}
+```
+### Break and continue
+> 使用 break 来终止循环 使用 continue 来开始下一次循环
+
+### Switch and case
+```
+void main() {
+  int i = 10;
+  switch (i) {
+    case 10:
+      print("perfect 10");
+      break;
+    default:
+      print("unknow");
+      break;
+  }
+}
+```
+### Assert（断言）
+```
+void main() {
+  int i = 10;
+  assert(i>18);
+}
+
+```
+---
+### Exceptions（异常）
+```
+void main() {
+  try{
+    testException1();
+  }on FormatException catch(e){
+    print(e.toString());
+  }catch(e){
+    print("unknow ${e.toString()}");
+  }finally{
+    print("finally");
+  }
+}
+
+void testException(){
+  int.parse("a12");
+}
+
+void testException1(){
+  throw Exception("unknow");
+}
+```
+### Classes 类
+> Dart 是一个面向对象编程语言，同时支持基于 mixin 的继承机制。 每个对象都是一个类的实例，所有的类都继承于 Object.。 基于 Mixin 的继承 意味着每个类（Object 除外） 都只有一个超类，一个类的代码可以在其他 多个类继承中重复使用。使用 new(不要也可以) 关键字和构造函数来创建新的对象。 构造函数名字可以为 ClassName 或者 ClassName.identifier。
+```
+import 'dart:math';
+
+class Point {
+  final num x;
+  final num y;
+  final num distanceFromOrigin;
+
+  Point(x, y)
+      : x = x,
+        y = y,
+        distanceFromOrigin = sqrt(x * x + y * y);
+}
+
+main() {
+  var p = new Point(2, 3);
+  print(p.distanceFromOrigin);
+}
+```
+### mixins
+使用 with 关键字后面为一个或者多个 mixin 名字来使用 mixin
+### Generics（泛型）
+### Asynchrony support（异步支持）
+Dart 有一些语言特性来支持 异步编程。 最常见的特性是 async 方法和 await 表达式。
+Dart 库中有很多返回 Future 或者 Stream 对象的方法。 这些方法是 异步的： 这些函数在设置完基本的操作 后就返回了， 而无需等待操作执行完成。 例如读取一个文件，在打开文件后就返回了。
+有两种方式可以使用 Future 对象中的 数据：
+1. 使用 async 和 await
+2.  使用 Future API
+同样，从 Stream 中获取数据也有两种 方式：
+1. 使用 async 和一个 异步 for 循环 (await for)
+2. 使用 Stream API
+```
+/*Future main() async {
+  var future = await testAsync();
+  print(future.runtimeType.toString());
+}*/
+
+void main() {
+  var future = testAsync();
+  future.then((s){
+    print(s);
+  });
+}
+
+Future<String> testAsync() async{
+  return "aysnc await";
+}
+
+```
 
 
 
